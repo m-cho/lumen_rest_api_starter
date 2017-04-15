@@ -7,7 +7,9 @@ git clone https://github.com/shugi-bugi/lumen_rest_api_starter.git
 cd lumen_rest_api_starter
 composer install
 cp .env.example .env
-# Edit .env with your settings
+
+# Edit .env with your config
+
 # Start dev server with:
 php -S localhost:8000 -t public
 ```
