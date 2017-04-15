@@ -6,6 +6,9 @@ Lumen (v5.4) Rest API starter with User controller and model (id, first_name, la
 git clone https://github.com/shugi-bugi/lumen_rest_api_starter.git
 cd lumen_rest_api_starter
 composer install
+cp .env.example .env
+# Edit .env with your settings
+# Start dev server with:
 php -S localhost:8000 -t public
 ```
 
