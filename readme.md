@@ -2,6 +2,13 @@
 
 Lumen (v5.4) Rest API starter with User controller and model (id, first_name, last_name, email, password) and authentification.
 
+```
+git clone https://github.com/shugi-bugi/lumen_rest_api_starter.git
+cd lumen_rest_api_starter
+composer install
+php -S localhost:8000 -t public
+```
+
 # Authentification
  * Authentification Header
     ```
