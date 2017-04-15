@@ -16,11 +16,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 {
     use Authenticatable, Authorizable;
 
-    public static $salt;
 
-    function __construct() {
-        self::$salt = env('APP_PASS_SALT', '');
-    }
+    function __construct() {}
     /**
      * The attributes that are mass assignable.
      *
@@ -40,12 +37,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     public static function cryptPassword($password) {
-        return sha1(self::$salt . $password);
+        return sha1(env('APP_PASS_SALT', '') . $password);
     }
 
     public static function checkAccessToken($token) {
         try {
-            $decoded = JWT::decode($token, env('APP_JWT_SALT', ''), array('HS512'));
+            $decoded = JWT::decode($token, env('APP_JWT_SALT', 'jwt s@lt'), array('HS512'));
         } catch (\Exception $err) {
             throw new \Exception($err->getMessage());
         }
@@ -67,7 +64,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             ]
         ];
 
-        $this->access_token = JWT::encode($data, env('APP_JWT_SALT', ''), 'HS512');
+        $this->access_token = JWT::encode($data, env('APP_JWT_SALT', 'jwt s@lt'), 'HS512');
         return $this;
     }
 }
